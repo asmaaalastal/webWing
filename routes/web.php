@@ -52,7 +52,8 @@ Route::post('/updateServices', 'ServiceController@updateServices');
 Route::get('/dropServices/{id}', 'ServiceController@dropeServices');
 Route::get('/restoreServices/{id}', 'ServiceController@restoreServices');
 //Team
-Route::get('/showTeam', 'TeamController@showTeam');
+Route::get('/teamTable', 'TeamController@showTeam');
+
 Route::post('/storeTeam', 'TeamController@storeTeam');
 Route::get('/createTeam', 'TeamController@createTeam');
 Route::get('/editTeam/{id}', 'TeamController@editTeam');

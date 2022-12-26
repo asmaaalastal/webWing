@@ -29,7 +29,7 @@
                                             <th>edit</th>
                                             <th>delete</th>
                                         </tr>
-                                    </thead>          
+                                    </thead>         
                                     @foreach($teams as $team)
                                         <tr>
                                             <td>{{$team->id}}</td>

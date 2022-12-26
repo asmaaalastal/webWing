@@ -19,8 +19,11 @@ class TeamController extends Controller
         return view("dashboard.teamTable")->with('teams',$team);
         //->with(['teams'=>$team]);
     }
+
+    
     public function storeTeam(Request $request){
         $team = new Team();
+
         $img = $request->file('image');
         $path = 'public/user_images/';
         $name = time().'_'.rand(1,10000).'.'.$img->getClientOriginalExtension();
@@ -55,6 +58,7 @@ class TeamController extends Controller
          ->delete();
         return redirect()->back();
     }
+
     public function restoreTeam($id){
         Team::onlyTrashed()
         ->where('id', $id)
