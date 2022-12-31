@@ -1,10 +1,12 @@
    <!-- team  section -->
+   {{ app()->setLocale(session()->get("locale") ?? "en") }}
+
    <div id="team" class="team">
       <div class="container">
          <div class="row">
             <div class="col-md-12">
                <div class="titlepage">
-                  <h2><strong class="yellow">Team</strong><br>We Have a Professional Team of Business Analysts.</h2>
+                  <h2><strong class="yellow">@lang('langs.Team')</strong><br>@lang('langs.TeamTitle')</h2>
                </div>
             </div>
          </div>
@@ -21,139 +23,13 @@
                         <div class="container">
                            <div class="carousel-caption ">
                               <div class="row">
+                              @foreach($teams as $team)
                                  <div class="col-md-4 col-sm-6">
                                     <div id="ho_bg" class="team_img">
-                                       <img src="images/team1.png" alt="#" />
-                                       <div class="ho_socal">
-                                          <ul class="social_icont">
-                                             <li> <a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                                             <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
-                                             <li> <a href="#"> <i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                                             <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
-                                          </ul>
-                                       </div>
+                                       <img style= "width:311.6% ; height:307% ;"src=" {{asset($team->img)}}" alt="#" />
                                     </div>
                                  </div>
-                                 <div class="col-md-4 col-sm-6">
-                                    <div id="ho_bg" class="team_img">
-                                       <img src="images/team2.png" alt="#" />
-                                       <div class="ho_socal">
-                                          <ul class="social_icont">
-                                             <li> <a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                                             <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
-                                             <li> <a href="#"> <i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                                             <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="col-md-4 col-sm-6 d_none1">
-                                    <div id="ho_bg" class="team_img ">
-                                       <img src="images/team3.png" alt="#" />
-                                       <div class="ho_socal">
-                                          <ul class="social_icont">
-                                             <li> <a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                                             <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
-                                             <li> <a href="#"> <i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                                             <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="carousel-item">
-                        <div class="container">
-                           <div class="carousel-caption">
-                              <div class="row">
-                                 <div class="col-md-4 col-sm-6 d_none1">
-                                    <div id="ho_bg" class="team_img ">
-                                       <img src="images/team1.png" alt="#" />
-                                       <div class="ho_socal">
-                                          <ul class="social_icont">
-                                             <li> <a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                                             <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
-                                             <li> <a href="#"> <i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                                             <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="col-md-4 col-sm-6">
-                                    <div id="ho_bg" class="team_img">
-                                       <img src="images/team2.png" alt="#" />
-                                       <div class="ho_socal">
-                                          <ul class="social_icont">
-                                             <li> <a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                                             <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
-                                             <li> <a href="#"> <i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                                             <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="col-md-4 col-sm-6">
-                                    <div id="ho_bg" class="team_img">
-                                       <img src="images/team3.png" alt="#" />
-                                       <div class="ho_socal">
-                                          <ul class="social_icont">
-                                             <li> <a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                                             <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
-                                             <li> <a href="#"> <i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                                             <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="carousel-item">
-                        <div class="container">
-                           <div class="carousel-caption">
-                              <div class="row">
-                                 <div class="col-md-4 col-sm-6">
-                                    <div id="ho_bg" class="team_img">
-                                       <img src="images/team1.png" alt="#" />
-                                       <div class="ho_socal">
-                                          <ul class="social_icont">
-                                             <li> <a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                                             <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
-                                             <li> <a href="#"> <i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                                             <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="col-md-4 col-sm-6 d_none1">
-                                    <div id="ho_bg" class="team_img ">
-                                       <img src="images/team2.png" alt="#" />
-                                       <div class="ho_socal">
-                                          <ul class="social_icont">
-                                             <li> <a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                                             <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
-                                             <li> <a href="#"> <i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                                             <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="col-md-4 col-sm-6">
-                                    <div id="ho_bg" class="team_img">
-                                       <img src="images/team3.png" alt="#" />
-                                       <div class="ho_socal">
-                                          <ul class="social_icont">
-                                             <li> <a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                                             <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
-                                             <li> <a href="#"> <i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                                             <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </div>
+                                 @endforeach 
                               </div>
                            </div>
                         </div>

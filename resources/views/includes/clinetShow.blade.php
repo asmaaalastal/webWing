@@ -1,10 +1,12 @@
    <!-- testimonial -->
+   {{ app()->setLocale(session()->get("locale") ?? "en") }}
+
    <div id="client" class="testimonial">
       <div class="container">
          <div class="row">
             <div class="col-md-12">
                <div class="titlepage">
-                  <h2><strong class="yellow">testimonial</strong><br>What is Syas our clients</h2>
+                  <h2><strong class="yellow">@lang('langs.Testmonial')</strong><br>@lang('langs.TestmonialTilte')</h2>
                </div>
             </div>
          </div>
@@ -16,48 +18,25 @@
             <li data-target="#testimo" data-slide-to="2"></li>
          </ol>
          <div class="carousel-inner">
+            <!-- @foreach($clinets as $clinet) -->
             <div class="carousel-item active">
                <div class="container">
                   <div class="carousel-caption ">
+                     @foreach($clinets as $clinet)
                      <div class="row">
                         <div class="col-md-6 offset-md-3">
                            <div class="test_box">
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis </p>
-                              <i><img src="images/cos.jpg" alt="#" /></i> <span>Consectetur</span>
+                              <p>{{ session()->get("locale") == "ar" ? $clinet->description_ar : $clinet->description }}</p>
+                              <i><img style="width:83% ; height:79%;" src="{{asset($clinet->img)}}" alt="#" /></i> <span>{{ session()->get("locale") == "ar" ? $clinet->name_ar :  $clinet->name }}</span>
                            </div>
                         </div>
                      </div>
+                     @endforeach
+
                   </div>
                </div>
             </div>
-            <div class="carousel-item">
-               <div class="container">
-                  <div class="carousel-caption">
-                     <div class="row">
-                        <div class="col-md-6 offset-md-3">
-                           <div class="test_box">
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis </p>
-                              <i><img src="images/cos.jpg" alt="#" /></i> <span>Consectetur</span>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="carousel-item">
-               <div class="container">
-                  <div class="carousel-caption">
-                     <div class="row">
-                        <div class="col-md-6 offset-md-3">
-                           <div class="test_box">
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis </p>
-                              <i><img src="images/cos.jpg" alt="#" /></i> <span>Consectetur</span>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
+            <!-- @endforeach -->
          </div>
          <a class="carousel-control-prev" href="#testimo" role="button" data-slide="prev">
             <i class="fa fa-chevron-left" aria-hidden="true"></i>

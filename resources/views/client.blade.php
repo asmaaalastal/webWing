@@ -1,5 +1,8 @@
 
 @extends('layouts.main')
 @section('content')
-@include('includes.clinetShow')
+@include('includes.clinetShow',['clinets' => $clinets])
+<div>
+{{$clinets->links()}}
+  </div>
  @stop

@@ -1,3 +1,6 @@
+{{ app()->setLocale(session()->get("locale") ?? "en") }}
+
+
 @extends('layouts.main')
 @section('content')
    <!-- banner -->
@@ -6,10 +9,10 @@
          <div class="row">
             <div class="col-md-7 col-lg-7">
                <div class="text-bg">
-                  <h1>Trusted and <br>Professional Advisers</h1>
-                  <span>for your Business</span>
-                  <p>Showcase your Profile to the world using online CV builder and Get Hired Faster</p>
-                  <a href="#">About us</a>
+                  <h1>@lang('langs.Title') <br>@lang('langs.TitleTwo')</h1>
+                  <span>@lang('langs.SubTitle')</span>
+                  <p>@lang('langs.Description')</p>
+                  <a href="#">@lang('langs.Aboutus')</a>
                </div>
             </div>
             <div class="col-md-5 col-lg-5">
@@ -29,9 +32,9 @@
          <div class="row">
             <div class="col-md-12 ">
                <div class="titlepage">
-                  <h2><strong class="yellow">PORTFOLIO</strong><br> CHOOSE A PROFESSIONAL DESIGN</h2>
-                  <span>Websites</span>
-                  <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distrib</p>
+                  <h2><strong class="yellow">@lang('langs.Portfolio')</strong><br>@lang('langs.PortfolioTitle')</h2>
+                  <span>@lang('langs.PortfolioType')</span>
+                  <p>@lang('langs.PortfolioDescription')</p>
                </div>
             </div>
          </div>
@@ -51,7 +54,6 @@
                            <div class="portfolio_img">
                               <img src="images/potf1.jpg" alt="#" />
                               <div class="middle">
-                                 <div class="text2">View More</div>
                               </div>
                            </div>
                         </div>
@@ -59,7 +61,6 @@
                            <div class="portfolio_img">
                               <img src="images/potf2.jpg" alt="#" />
                               <div class="middle">
-                                 <div class="text2">View More</div>
                               </div>
                            </div>
                         </div>
@@ -67,7 +68,6 @@
                            <div class="portfolio_img">
                               <img src="images/potf3.jpg" alt="#" />
                               <div class="middle">
-                                 <div class="text2">View More</div>
                               </div>
                            </div>
                         </div>
@@ -75,98 +75,8 @@
                            <div class="portfolio_img">
                               <img src="images/potf4.jpg" alt="#" />
                               <div class="middle">
-                                 <div class="text2">View More</div>
                               </div>
                            </div>
-                        </div>
-                        <div class="col-md-12">
-                           <a class="read_more" href="#">Read More</a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="carousel-item">
-               <div class="container">
-                  <div class="carousel-caption">
-                     <div class="row">
-                        <div class="col-md-3 col-sm-6">
-                           <div class="portfolio_img">
-                              <img src="images/potf1.jpg" alt="#" />
-                              <div class="middle">
-                                 <div class="text2">View More</div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                           <div class="portfolio_img">
-                              <img src="images/potf2.jpg" alt="#" />
-                              <div class="middle">
-                                 <div class="text2">View More</div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                           <div class="portfolio_img">
-                              <img src="images/potf3.jpg" alt="#" />
-                              <div class="middle">
-                                 <div class="text2">View More</div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                           <div class="portfolio_img">
-                              <img src="images/potf4.jpg" alt="#" />
-                              <div class="middle">
-                                 <div class="text2">View More</div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="col-md-12">
-                           <a class="read_more" href="#">Read More</a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="carousel-item">
-               <div class="container">
-                  <div class="carousel-caption">
-                     <div class="row">
-                        <div class="col-md-3 col-sm-6">
-                           <div class="portfolio_img">
-                              <img src="images/potf1.jpg" alt="#" />
-                              <div class="middle">
-                                 <div class="text2">View More</div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                           <div class="portfolio_img">
-                              <img src="images/potf2.jpg" alt="#" />
-                              <div class="middle">
-                                 <div class="text2">View More</div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                           <div class="portfolio_img">
-                              <img src="images/potf3.jpg" alt="#" />
-                              <div class="middle">
-                                 <div class="text2">View More</div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                           <div class="portfolio_img">
-                              <img src="images/potf4.jpg" alt="#" />
-                              <div class="middle">
-                                 <div class="text2">View More</div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="col-md-12">
-                           <a class="read_more" href="#">Read More</a>
                         </div>
                      </div>
                   </div>
@@ -188,8 +98,8 @@
          <div class="row">
             <div class="col-md-7">
                <div class="titlepage">
-                  <h2><strong class="yellow">CREATE</strong><br>PERSONALISED Business</h2>
-                  <p>ss normal distribution of letters, as opposed to using </p>
+                  <h2><strong class="yellow">@lang('langs.Create')</strong><br>@lang('langs.CreateTitle')</h2>
+                  <p>@lang('langs.CreateDescription')</p>
                </div>
             </div>
          </div>
@@ -197,33 +107,30 @@
             <div class="col-md-3 col-sm-6">
                <div id="ho_color" class="business_box">
                   <i><img src="images/business_icon1.png" alt="#" /></i>
-                  <h3>23</h3>
-                  <p>NOMINATIONS </p>
+                  <h3>@lang('langs.NominationsNumber')</h3>
+                  <p>@lang('langs.Nominations') </p>
                </div>
             </div>
             <div class="col-md-3 col-sm-6">
                <div id="ho_color" class="business_box">
                   <i><img src="images/business_icon2.png" alt="#" /></i>
-                  <h3>31</h3>
-                  <p>AGENCIES</p>
+                  <h3>@lang('langs.AgenciesNumber')</h3>
+                  <p>@lang('langs.Agencies')</p>
                </div>
             </div>
             <div class="col-md-3 col-sm-6">
                <div id="ho_color" class="business_box">
                   <i><img src="images/business_icon3.png" alt="#" /></i>
-                  <h3>7</h3>
-                  <p>AWARDS</p>
+                  <h3>@lang('langs.AwardsNumber')</h3>
+                  <p>@lang('langs.Awards')</p>
                </div>
             </div>
             <div class="col-md-3 col-sm-6">
                <div id="ho_color" class="business_box">
                   <i><img src="images/business_icon4.png" alt="#" /></i>
-                  <h3>8</h3>
-                  <p>Supported </p>
+                  <h3>@lang('langs.SupportedNumber')</h3>
+                  <p>@lang('langs.Supported') </p>
                </div>
-            </div>
-            <div class="col-md-12">
-               <a class="read_more" href="#">Read More</a>
             </div>
          </div>
       </div>

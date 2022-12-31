@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Clinet;
-use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\ClinetRequest;
 
 // use Illuminate\Support\Facade\Storage;
 
@@ -12,23 +12,24 @@ class ClinetController extends Controller
 {
     //Clinet
     public function showClinet(){
-       $clinet = Clinet::Select('*')
+       $clinet = Clinet::Select('*')->withTrashed()
        -> get();
        return view("dashboard.clinetTable")->with('clinets',$clinet);
    }
-   public function storeClinet(Request $request){
+   public function storeClinet(ClinetRequest $request){
        $clinet = new Clinet();
-       $img = $request->file('image');
-       $path = 'public/user_images/';
-       $name = time().'_'.rand(1,10000).'.'.$img->getClientOriginalExtension();
-       Storage::disk('local')->put($path.$name, file_get_contents($img));
-       $clinet-> img = $path.$name;
+    //    $path = $request->file('image')->store('public/user_images');
+    //    $fileName = basename($path);
+    //    $clinet->img = $fileName;
+       $filename = time().'.'.$request->image->extension();
+       $request->image->move(public_path('user_images'), $filename);
+       $clinet->img = '/user_images/' . $filename; 
        $clinet-> name = $request-> name;
+       $clinet-> name_ar = $request-> name_ar;
        $clinet-> description = $request-> description;
-       $clinet-> email = $request-> email;
-       $clinet-> phone_number = $request-> phone_number;
-       $clinet-> save();
-       return redirect()->back();
+       $clinet-> description_ar = $request-> description_ar;
+       $st = $clinet-> save();
+       return redirect()->back()->with('st',$st);
    }
    public function createClinet(){
        return view('dashboard.clinetForm');
@@ -37,25 +38,23 @@ class ClinetController extends Controller
        $clinet = Clinet::Select('*')
        -> Where('id',$id)
        ->first();
-       return view("dashboard.clinetEditForm")->with('Clinet',$clinet);
+       return view("dashboard.clinetEditForm")->with('clinet',$clinet);
         //صفحة الايدت
    }
-   public function updateClinet(Request $request){
-       $img = $request->file('image');
-       $path = 'public/user_images/';
-       $name = time().'_'.rand(1,10000).'.'.$img->getClientOriginalExtension();
-       Storage::disk('local')->put($path.$name, file_get_contents($img));
-       $clinet = Clinet::Where('id',$request->id)
-       ->Update([
-    //    'img'=>$request->img,
-       'name'=>$request->name,
-       'description'=>$request->description,
-       'email'=>$request->email,
-       'phone_number'=>$request->phone_number
-    ]);
-       $clinet-> img = $path.$name;
-       $clinet-> save();
-       return redirect()->back();
+   public function updateClinet(ClinetRequest $request){
+    $clinet = Clinet::Select('*')->where('id', $request->id)->first();
+    // $path = $request->file('image')->store('public/user_images');
+    // $fileName = basename($path);
+    // $clinet->img = $fileName;
+    $filename = time().'.'.$request->image->extension();
+    $request->image->move(public_path('user_images'), $filename);
+    $clinet->img = '/user_images/' . $filename; 
+    $clinet -> name = $request-> name;
+    $clinet-> name_ar = $request-> name_ar;
+    $clinet -> description = $request-> description;
+    $clinet-> description_ar = $request-> description_ar;
+    $st =  $clinet -> save();
+    return redirect()->back()->with('st',$st);
    }
    public function dropClinet($id){
        Clinet::where('id', $id)

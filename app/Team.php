@@ -9,4 +9,5 @@ class Team extends Model
 {
     //
     use SoftDeletes;
+
 }

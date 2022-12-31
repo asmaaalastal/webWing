@@ -1,3 +1,5 @@
+{{ app()->setLocale(session()->get("locale") ?? "en") }}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,28 +51,26 @@
                <div class="row">
                   <div class="col-md-6 col-sm-6">
                      <ul class="lan">
-                        <li><i class="fa fa-globe" aria-hidden="true"></i> Language : <img src="images/fleg.png" alt="#" /></li>
+                        <li><i class="fa fa-globe" aria-hidden="true"></i>@lang('langs.Language')</li>
                      </ul>
-                     <form action="#">
-                        <div class="select-box">
-                           <label for="select-box1" class="label select-box1"><span class="label-desc">English</span> </label>
-                           <select id="select-box1" class="select">
-                              <option value="Choice 1">English</option>
-                              <option value="Choice 1">Falkla</option>
-                              <option value="Choice 2">Germa</option>
-                              <option value="Choice 3">Neverl</option>
-                           </select>
-                        </div>
+                     <form method="POST" action="/language">
+                        @csrf
+                        <select name="locale" onchange="this.form.submit()">
+                           <option value="en" {{ session()->get("locale") === 'en' ? 'selected' : '' }}>English</option>
+                           <option value="ar" {{ session()->get("locale")  === 'ar' ? 'selected' : '' }}>Arabic</option>
+                        </select>
                      </form>
                   </div>
                   <div class="col-md-6 col-sm-6 ">
                      <ul class="social_icon1">
-                        <li> F0llow Us
+                        <li>@lang('langs.FollowUs')
                         </li>
                         <li> <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i>
                            </a>
                         </li>
                         <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <div>
+                        </div>
                         <li> <a href="#"> <i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                         <li> <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i>
                            </a>
@@ -85,7 +85,8 @@
                <div class="row d_flex">
                   <div class="col-md-4 col-sm-4 d_none">
                      <ul class="conta_icon">
-                        <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i> Call Us : +01 1234567890</a> </li>
+                        <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i> @lang('langs.CallUs') : +01 1234567890</a> </li>
+                        <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i> demo@gmail.com</a> </li>
                      </ul>
                   </div>
                   <div class="col-md-4 col-sm-4 ">
@@ -93,7 +94,13 @@
                   </div>
                   <div class="col-md-4 col-sm-4 d_none">
                      <ul class="conta_icon ">
-                        <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i> demo@gmail.com</a> </li>
+                        <il>
+                           <form class="example" method="post" action="{{URL::to('/Search')}}" style="margin:auto;max-width:300px">
+                              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                              <input type="text" placeholder=" @lang('langs.Search') " name="name" style="font-size: 14px; border-radius: 5px; padding: 5px 2px 5px 2px; ">
+                              <button type="submit" style="background-color: #f2db18; border-radius: 5px; padding: 6.5px 10px 6.5px 10px; "><i class="fa fa-search"></i></button>
+                           </form>
+                        </il>
                      </ul>
                   </div>
                </div>
@@ -110,22 +117,22 @@
                         <div class="collapse navbar-collapse" id="navbarsExample04">
                            <ul class="navbar-nav mr-auto">
                               <li class="nav-item active">
-                                 <a class="nav-link" href="{{URL::to('/Index')}}"> Home </a>
+                                 <a class="nav-link" href="{{URL::to('/Index')}}">@lang('langs.Home') </a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="{{URL::to('/About')}}">about</a>
+                                 <a class="nav-link" href="{{URL::to('/About')}}">@lang('langs.About')</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="{{URL::to('/Service')}}">services</a>
+                                 <a class="nav-link" href="{{URL::to('/Service')}}">@lang('langs.Service')</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="{{URL::to('/Team')}}">team </a>
+                                 <a class="nav-link" href="{{URL::to('/Team')}}">@lang('langs.Team') </a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="{{URL::to('/Clinet')}}">Clients</a>
+                                 <a class="nav-link" href="{{URL::to('/Clinet')}}">@lang('langs.Clinet')</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="{{URL::to('/Contact')}}"> contact us </a>
+                                 <a class="nav-link" href="{{URL::to('/Contact')}}"> @lang('langs.Contact') </a>
                               </li>
                            </ul>
                         </div>
@@ -133,8 +140,7 @@
                   </div>
                   <div class="col-md-3 col-sm-5 d_none">
                      <ul class="sign">
-                        <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-                        <li><a class="sign_btn" href="{{URL::to('/dashboardHome')}}">sign In</a></li>
+                        <li style="margin-left: 10px;"><a class="sign_btn" href="{{URL::to('/dashboardHome')}}">@lang('langs.Sign')</a></li>
                      </ul>
                   </div>
                </div>
@@ -147,8 +153,8 @@
 
    @yield('content')
 
-    <!--  footer -->
-    <footer>
+   <!--  footer -->
+   <footer>
       <div class="footer">
          <div class="container">
             <div class="row">
@@ -156,10 +162,10 @@
                   <a class="logo2" href="#"><img src="images/loogo2.png" alt="#" /></a>
                </div>
                <div class="col-lg-5 col-md-6 col-sm-6">
-                  <h3>Contact Us</h3>
+                  <h3>@lang('langs.Contact')</h3>
                   <ul class="location_icon">
-                     <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i></a> London 145
-                        <br> United Kingdom
+                     <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i></a> @lang('langs.LocationCity')
+                        <br> @lang('langs.LocationCountry')
                      </li>
                      <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>demo@gmail.com<br> demo@gmail.com</li>
                      <li><a href="#"><i class="fa fa-volume-control-phone" aria-hidden="true"></i></a>+01 1234567890<br>+01 1234567889</li>
@@ -172,41 +178,41 @@
                   </ul>
                </div>
                <div class="col-lg-2 col-md-6 col-sm-6">
-                  <h3>Menus</h3>
+                  <h3>@lang('langs.Menu')</h3>
                   <ul class="link_icon">
-                     <li class="active"> <a href="index.html"> Home</a></li>
+                     <li class="active"> <a href="index.html"> @lang('langs.Home')</a></li>
                      <li>
                         <a href="about.html">
-                           </i>About Us
+                           </i>@lang('langs.Aboutus')
                      </li>
-                     <li> <a href="service.html"> </i>Services</a></li>
-                     <li> <a href="team.html"></i>Team</a></li>
-                     <li> <a href="client.html"></i>Clients</a></li>
-                     <li> <a href="contact.html"></i>Contact us</a></li>
+                     <li> <a href="service.html"> </i>@lang('langs.Service')</a></li>
+                     <li> <a href="team.html"></i>@lang('langs.Team')</a></li>
+                     <li> <a href="client.html"></i>@lang('langs.Clinet')</a></li>
+                     <li> <a href="contact.html"></i>@lang('langs.Contact')</a></li>
                   </ul>
                </div>
                <div class="col-lg-2 col-md-6 col-sm-6">
-                  <h3>Recent Post</h3>
+                  <h3>@lang('langs.Recent')</h3>
                   <ul class="link_icon">
-                     <li> <a href="#"> Participate in staff </a></li>
+                     <li> <a href="#"> @lang('langs.Participate') </a></li>
                      <li>
                         <a href="#">
-                           meetings manage
+                           @lang('langs.Meet')
                      </li>
-                     <li> <a href="#"> dedicated to </a></li>
-                     <li> <a href="#"> marketing</a></li>
-                     <li> <a href="#"> November 25, 2019</a></li>
+                     <li> <a href="#"> @lang('langs.Dedicated') </a></li>
+                     <li> <a href="#"> @lang('langs.Markting')</a></li>
+                     <li> <a href="#"> @lang('langs.Date')</a></li>
                   </ul>
                </div>
                <div class="col-lg-3 col-md-6 col-sm-6">
-                  <h3>Newsletter</h3>
+                  <h3>@lang('langs.News')</h3>
                   <form id="request" class="main_form">
                      <div class="row">
                         <div class="col-md-12 ">
-                           <input class="news" placeholder="Your Email" type="type" name="Your Email">
+                           <input class="news" placeholder="@lang('langs.Email')" type="type" name="Your Email">
                         </div>
                         <div class="col-md-12">
-                           <button class="send_btn">Send</button>
+                           <button class="send_btn">@lang('langs.Send')</button>
                         </div>
                      </div>
                   </form>
@@ -217,7 +223,7 @@
             <div class="container">
                <div class="row">
                   <div class="col-md-12">
-                     <p>© 2019 All Rights Reserved.<a href="https://html.design/"> Free html Templates</a></p>
+                     <p>@lang('langs.Rights')<a href="https://html.design/">@lang('langs.Template')</a></p>
                   </div>
                </div>
             </div>

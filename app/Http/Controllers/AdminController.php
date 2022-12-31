@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Service;
+use App\Team;
+use App\Clinet;
+
 
 class AdminController extends Controller
 {
 
     //dashboard 
     public function getHome(){
-        return view('dashboard/dashboardHome');
-    }
-    public function getTables(){
-        return view('dashboard/dashboardTables');
+        $services = Service::select('*')->get();
+        return view('dashboard/dashboardHome')->with(['services' => $services]);
     }
     public function getTeamForm(){
         return view('dashboard/teamForm');

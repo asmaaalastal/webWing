@@ -1,59 +1,25 @@
+{{ app()->setLocale(session()->get("locale") ?? "en") }}
    <!-- service section -->
    <div id="service" class="service">
       <div class="container">
          <div class="row">
             <div class="col-md-7">
                <div class="titlepage">
-                  <h2><strong class="yellow">service</strong><br> WE CAN HELP YOUR business GROW</h2>
+                  <h2><strong class="yellow">@lang('langs.Service')</strong><br> @lang('langs.AboutServiceTitle')</h2>
                </div>
             </div>
          </div>
          <div class="row">
+         @foreach($services as $service)
             <div class="col-md-4 col-sm-6">
                <div id="ho_color" class="service_box">
-                  <img src="images/service_icon1.png" alt="#" />
-                  <h3>DIGITAL marketing</h3>
-                  <p>Lorem Ipsum is simply dummy text of the printing and1500s, </p>
+               <!-- src="{{ asset('storage/user_images/' . $service->img ) }} " -->
+                  <i><img style = "width:20% ; height:20%;" src="{{asset($service->img)}} " ></i>
+                  <a href="{{URL::to('/serviceDetail/' . $service->id )}}"><h3>{{ session()->get("locale") == "ar" ? $service->name_ar :  $service->name }}</h3></a>
+                  <p>{{ session()->get("locale") == "ar" ? $service->description_ar :  $service->description }}</p>
                </div>
             </div>
-            <div class="col-md-4 col-sm-6">
-               <div id="ho_color" class="service_box">
-                  <img src="images/service_icon2.png" alt="#" />
-                  <h3>FINANCIAL PLANING</h3>
-                  <p>Lorem Ipsum is simply dummy text of the printing and1500s, </p>
-               </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-               <div id="ho_color" class="service_box">
-                  <img src="images/service_icon3.png" alt="#" />
-                  <h3>DIGITAL marketing</h3>
-                  <p>Lorem Ipsum is simply dummy text of the printing and1500s, </p>
-               </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-               <div id="ho_color" class="service_box">
-                  <img src="images/service_icon4.png" alt="#" />
-                  <h3>BUSINESS CONSULTING</h3>
-                  <p>Lorem Ipsum is simply dummy text of the printing and1500s, </p>
-               </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-               <div id="ho_color" class="service_box">
-                  <img src="images/service_icon5.png" alt="#" />
-                  <h3>MARKETING RESEARCH</h3>
-                  <p>Lorem Ipsum is simply dummy text of the printing and1500s, </p>
-               </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-               <div id="ho_color" class="service_box">
-                  <img src="images/service_icon6.png" alt="#" />
-                  <h3>UX RESEARCH</h3>
-                  <p>Lorem Ipsum is simply dummy text of the printing and1500s, </p>
-               </div>
-            </div>
-            <div class="col-md-12">
-               <a class="read_more" href="#">Read More</a>
-            </div>
+            @endforeach
          </div>
       </div>
    </div>

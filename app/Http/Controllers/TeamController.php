@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Team;
-use App;
-use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\TeamRequest;
+
 
 
 class TeamController extends Controller
@@ -13,45 +13,46 @@ class TeamController extends Controller
     
     //Team
     public function showTeam(){
-      //   App::setLocale('ar');
-        $team = Team::Select('*')
+        //App::setLocale('ar');
+        //App()->setLocale('ar');
+        $team = Team::Select('*')->withTrashed()
         -> get();
         return view("dashboard.teamTable")->with('teams',$team);
         //->with(['teams'=>$team]);
     }
 
     
-    public function storeTeam(Request $request){
+    public function storeTeam(TeamRequest $request){
         $team = new Team();
-
-        $img = $request->file('image');
-        $path = 'public/user_images/';
-        $name = time().'_'.rand(1,10000).'.'.$img->getClientOriginalExtension();
-        Storage::disk('local')->put($path.$name, file_get_contents($img));
-        $team-> img = $path.$name;
-        $team-> save();
-        return redirect()->back();
+        // $path = $request->file('image')->store('public/user_images');
+    	// $fileName = basename($path);
+    	// $team->img = $fileName;
+        $filename = time().'.'.$request->image->extension();
+        $request->image->move(public_path('user_images'), $filename);
+        $team->img = '/user_images/' . $filename; 
+        $st = $team-> save();
+        return redirect()->back()->with('st',$st);
     }
     public function createTeam(){
-         // App::setLocale('ar');
         return view('dashboard.teamForm');
     }
     public function editTeam($id){
         $team = Team::Select('*')
         -> Where('id',$id)
         ->first();
-        return view("dashboard.teamEditForm")->with('Team',$team);
+        return view("dashboard.teamEditForm")->with('team',$team);
         
     }
-    public function updateTeam(Request $request){
-       $img = $request->file('image');
-       $path = 'public/user_images/';
-       $name = time().'_'.rand(1,10000).'.'.$img->getClientOriginalExtension();
-       Storage::disk('local')->put($path.$name, file_get_contents($img));
-       $team = Team::Select('*')->Where('id',$request->id);
-        $team-> img = $path.$name;
-        $team-> save();
-        return redirect()->back();
+    public function updateTeam(TeamRequest $request){
+       $team = Team::Select('*')->Where('id',$request->id)->first();
+    //    $path = $request->file('image')->store('public/user_images');
+    //    $fileName = basename($path);
+    //    $team->img = $fileName;
+       $filename = time().'.'.$request->image->extension();
+       $request->image->move(public_path('user_images'), $filename);
+       $team->img = '/user_images/' . $filename; 
+       $st =  $team -> save();
+       return redirect()->back()->with('st',$st);
     }
     public function dropTeam($id){
         Team::where('id', $id)

@@ -1,4 +1,7 @@
+{{ app()->setLocale(session()->get("locale") ?? "en") }}
 @extends('dashboard/layouts.main')
+@extends('dashboard/includes.errors')
+@extends('dashboard/includes.addedMessage')
 @section('dashboardContent')
 
 <div id="app">
@@ -18,7 +21,7 @@
       <div class="navbar-item dropdown has-divider">
           <a class="navbar-item">
             <span class="icon"><i class="mdi mdi-logout"></i></span>
-            <span>Log Out</span>
+            <span>@lang('langs.logout')</span>
           </a>
         </div>
       </div>
@@ -28,8 +31,8 @@
 <section class="is-title-bar">
   <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
     <ul>
-      <li>Dashboard</li>
-      <li>Forms</li>
+      <li>@lang('langs.Dashboard')</li>
+      <li>@lang('langs.form')</li>
     </ul>
   </div>
 </section>
@@ -38,7 +41,7 @@
       <header class="card-header">
         <p class="card-header-title">
           <span class="icon"><i class="mdi mdi-ballot"></i></span>
-          Forms
+          @lang('langs.form')
         </p>
       </header>
       <div class="card-content">
@@ -46,9 +49,16 @@
           <input type="hidden" name="_token" value="{{csrf_token()}}"> 
         @csrf
           <div class="field">
-            <label class="label">Name</label>
             <div class="field-body">
               <div class="field">
+              <label class="label">@lang('langs.name')</label>
+                <div class="control icons-left">
+                  <input class="input" type="text" placeholder="Name" name="name">
+                  <span class="icon left"><i class="mdi mdi-account"></i></span>
+                </div>
+              </div>
+              <div class="field">
+              <label class="label">@lang('langs.name_ar')</label>
                 <div class="control icons-left">
                   <input class="input" type="text" placeholder="Name" name="name">
                   <span class="icon left"><i class="mdi mdi-account"></i></span>
@@ -57,35 +67,40 @@
             </div>
           </div>
           <div class="field">
-            <label class="label">Description</label>
+            <label class="label">@lang('langs.description')</label>
+            <div class="control">
+              <textarea name="description" class="textarea" placeholder="Explain..."></textarea>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">@lang('langs.description_ar')</label>
             <div class="control">
               <textarea name="description" class="textarea" placeholder="Explain..."></textarea>
             </div>
           </div>
           <hr>
         <div class="field">
-          <label class="label">File</label>
+          <div class="field-body">
+          <div class="field">
+          <label class="label">@lang('langs.img')</label>
           <div class="field-body">
             <div class="field file">
-              <label class="upload control">
-                <a class="button blue">
-                  Upload
-                </a>
-                <input name="img" type="file">
-              </label>
+              <input type="file" name="image">
             </div>
+          </div>
+        </div>
           </div>
         </div>
         <hr>
           <div class="field grouped">
             <div class="control">
               <button type="submit" class="button green">
-                Submit
+              @lang('langs.submit')
               </button>
             </div>
             <div class="control">
               <button type="reset" class="button red">
-                Reset
+              @lang('langs.reset')
               </button>
             </div>
           </div>

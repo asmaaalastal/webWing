@@ -1,47 +1,51 @@
+{{ app()->setLocale(session()->get("locale") ?? "en") }}
 @extends('dashboard/layouts.main')
 @section('dashboardContent')
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Team Table</h1>
+                        <h1 class="mt-4">@lang('langs.TTable')</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="dashboardHome">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Team Table</li>
+                            <li class="breadcrumb-item"><a href="dashboardHome">@lang('langs.Dashboard')</a></li>
+                            <li class="breadcrumb-item active">@lang('langs.TTable')</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
-                                DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-                                <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-                                .
+                            @lang('langs.DTableDescription')                                .
                             </div>
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Team DataTable 
+                                @lang('langs.TDTable')
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>id</th>
-                                            <th>img</th>
-                                            <th>edit</th>
-                                            <th>delete</th>
+                                            <th> @lang('langs.id')</th>
+                                            <th> @lang('langs.img')</th>
+                                            <th>@lang('langs.modification')</th>
                                         </tr>
-                                    </thead>         
+                                    </thead>
+                                    <tbody>   
                                     @foreach($teams as $team)
                                         <tr>
                                             <td>{{$team->id}}</td>
-                                            <td>{{$team->img}}</td>
-                                            <td class="actions-cell">
-                                            <a href="{{URL::to('/editTeam')}}"> <button class="button-68" role="button" type="button">edit</button></a>
-                                        </td>
+                                            <td> <img style="width: 40%; height: 40%;" src= "{{ asset($team->img)}}"></td>
+                                        @if(!@empty($team->deleted_at))
                                         <td class="actions-cell">
-                                        <a href="{{URL::to('/dropTeam')}}"><button class="button-68" role="button" type="button">delete</button></a> 
+                                        <a href="{{URL::to('/restoreTeam/' . $team->id )}}"><button class="button-68" role="button" type="button">@lang('langs.restor')</button></a> 
                                         </td>
+                                        @else
+                                            <td class="actions-cell">
+                                            <a href="{{URL::to('/editTeam/' . $team->id )}}"> <button class="button-68" role="button" type="button">@lang('langs.edit')</button></a>
+                                            <a href="{{URL::to('/dropTeam/' . $team->id )}}"><button class="button-68" role="button" type="button">@lang('langs.delete')</button></a> 
+                                            </td>
+                                        @endif
                                         </tr>
                                     @endforeach         
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
