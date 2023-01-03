@@ -55,14 +55,9 @@ class UserController extends Controller
     }
     public function search(Request $request)
     {
-        $services = [];
-
-        if (session()->get("locale") == "en") {
-            $services = Service::select('*')->where('name', 'like', '%' . $request->name . '%')->paginate(6);
-        } else 
-            $services = Service::select('*')->where('name_ar', 'like', '%' . $request->name_ar . '%')->paginate(6);
-        
-
+            $services = Service::select('*')->where('name', 'like', '%' . $request->name . '%')->
+            orWhere('name_ar', 'like', '%' . $request->name . '%')->
+            paginate(6);
         return view('search')->with('services', $services);
     }
     public function changeLang($lang)

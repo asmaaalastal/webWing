@@ -63,7 +63,7 @@
               <div class="field">
                 <label class="label">@lang('langs.name_ar')</label>
                 <div class="control icons-left">
-                  <input name="name" class="input" type="text" placeholder="Name"value="{{ $clinet->name_ar }}">
+                  <input name="name_ar" class="input" type="text" placeholder="Name"value="{{ $clinet->name_ar }}">
                   <span class="icon left"><i class="mdi mdi-account"></i></span>
                 </div>
               </div>
@@ -76,10 +76,11 @@
               <textarea class="textarea" name="description" placeholder="{{ $clinet->description }}"></textarea>
             </div>
           </div>
+          <hr>
           <div class="field">
             <label class="label">@lang('langs.description_ar')</label>
             <div class="control">
-              <textarea name="description" class="textarea" placeholder="{{ $clinet->description_ar }}"></textarea>
+              <textarea name="description_ar" class="textarea" placeholder="{{ $clinet->description_ar }}"></textarea>
             </div>
           </div>
           <hr>

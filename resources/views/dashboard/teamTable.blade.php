@@ -32,7 +32,7 @@
                                     @foreach($teams as $team)
                                         <tr>
                                             <td>{{$team->id}}</td>
-                                            <td> <img style="width: 40%; height: 40%;" src= "{{ asset($team->img)}}"></td>
+                                            <td> <img style="width: 20%; height: 20%;" src= "{{ asset($team->img)}}"></td>
                                         @if(!@empty($team->deleted_at))
                                         <td class="actions-cell">
                                         <a href="{{URL::to('/restoreTeam/' . $team->id )}}"><button class="button-68" role="button" type="button">@lang('langs.restor')</button></a> 

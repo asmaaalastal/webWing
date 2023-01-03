@@ -63,7 +63,7 @@
               <div class="field">
               <label class="label">@lang('langs.name_ar')</label>
                 <div class="control icons-left">
-                  <input class="input" type="text"  name="name" placeholder="{{ $service->name_ar }}">
+                  <input class="input" type="text"  name="name_ar" placeholder="{{ $service->name_ar }}">
                   <span class="icon left"><i class="mdi mdi-account"></i></span>
                 </div>
               </div>
@@ -78,7 +78,7 @@
           <div class="field">
             <label class="label">@lang('langs.description_ar')</label>
             <div class="control">
-              <textarea class="textarea" name="description" placeholder="{{ $service->description_ar }}"></textarea>
+              <textarea class="textarea" name="description_ar" placeholder="{{ $service->description_ar }}"></textarea>
             </div>
           </div>
           <hr>

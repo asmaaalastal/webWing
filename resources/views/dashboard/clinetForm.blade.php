@@ -62,16 +62,14 @@
                 <div class="field">
                 <label class="label">@lang('langs.name_ar')</label>
                 <div class="control icons-left">
-                  <input name="name" class="input" type="text" placeholder="Name">
+                  <input name="name_ar" class="input" type="text" placeholder="الاسم">
                   <span class="icon left"><i class="mdi mdi-account"></i></span>
                 </div>
               </div>
               </div>
             </div>
-          </div>
-          
+          </div>         
           <hr>
-
           <div class="field">
             <label class="label">@lang('langs.description')</label>
             <div class="control">
@@ -81,7 +79,7 @@
           <div class="field">
             <label class="label">@lang('langs.description_ar')</label>
             <div class="control">
-              <textarea name="description" class="textarea" placeholder="Explain..."></textarea>
+              <textarea name="description_ar" class="textarea" placeholder="...الوصف"></textarea>
             </div>
           </div>
           <hr>

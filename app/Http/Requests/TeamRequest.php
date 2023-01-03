@@ -23,13 +23,13 @@ class TeamRequest extends FormRequest
     public function rules()
     {
         return [
-            'img' => 'required',
+            'image' => 'required',
         ];
     }
     public function messages()
     {
         return [
-            'img.required' => 'You must upload an image',
+            'image.required' => 'You must upload an image',
         ];
     }
 }

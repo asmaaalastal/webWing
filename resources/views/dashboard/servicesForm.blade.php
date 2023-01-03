@@ -60,7 +60,7 @@
               <div class="field">
               <label class="label">@lang('langs.name_ar')</label>
                 <div class="control icons-left">
-                  <input class="input" type="text" placeholder="Name" name="name">
+                  <input class="input" type="text" placeholder="الاسم" name="name_ar">
                   <span class="icon left"><i class="mdi mdi-account"></i></span>
                 </div>
               </div>
@@ -75,7 +75,7 @@
           <div class="field">
             <label class="label">@lang('langs.description_ar')</label>
             <div class="control">
-              <textarea name="description" class="textarea" placeholder="Explain..."></textarea>
+              <textarea name="description_ar" class="textarea" placeholder="...الوصف"></textarea>
             </div>
           </div>
           <hr>
