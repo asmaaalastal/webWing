@@ -27,6 +27,8 @@ class ServiceController extends Controller
         $service-> name_ar = $request-> name_ar;
         $service-> description = $request->description;
         $service-> description_ar = $request-> description_ar;
+        $service-> body = $request->body;
+        $service-> body_ar = $request-> body_ar;
         $st = $service-> save();
         return redirect()->back()->with('st',$st);
     }
@@ -46,6 +48,8 @@ class ServiceController extends Controller
         $service-> name_ar = $request-> name_ar;
         $service-> description = $request->description;
         $service-> description_ar = $request-> description_ar;
+        $service-> body = $request->body;
+        $service-> body_ar = $request-> body_ar;
         $filename = time().'.'.$request->image->extension();
         $request->image->move(public_path('user_images'), $filename);
         $service->img = '/user_images/' . $filename; 

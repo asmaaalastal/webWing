@@ -97,6 +97,8 @@ return [
     'Tform' => 'Team Form',
     'form' => 'Forms',
     'from' => 'From',
+    'body' => 'Body',
+    'body_ar' => 'Body_Ar',
     'explain' => 'Explain',
     'choose' => 'Choose File',
     'file' => 'NO File CHOOSEN',

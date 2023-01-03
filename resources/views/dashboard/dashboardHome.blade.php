@@ -62,6 +62,8 @@
                                             <th>@lang('langs.img')</th>
                                             <th>@lang('langs.description')</th>
                                             <th>@lang('langs.description_ar')</th>
+                                            <th>@lang('langs.body')</th>
+                                            <th>@lang('langs.body_ar')</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -73,6 +75,8 @@
                                             <td> <img style="width: 40%; height: 40%;" src= "{{ asset($service->img)}}"></td>
                                             <td>{{$service->description}}</td>
                                             <td>{{$service->description_ar}}</td>
+                                            <td>{{$service->body}}</td>
+                                            <td>{{$service->body_ar}}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>

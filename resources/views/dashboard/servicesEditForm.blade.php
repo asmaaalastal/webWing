@@ -82,6 +82,20 @@
             </div>
           </div>
           <hr>
+          <div class="field">
+            <label class="label">@lang('langs.body')</label>
+            <div class="control">
+              <textarea name="body" class="textarea" placeholder="{{ $service->body }}"></textarea>
+            </div>
+          </div>
+          <hr>
+          <div class="field">
+            <label class="label">@lang('langs.body_ar')</label>
+            <div class="control">
+              <textarea name="body_ar" class="textarea" placeholder="{{ $service->body_ar }}"></textarea>
+            </div>
+          </div>
+          <hr>
         <div class="field">
           <div class="field-body">
           <div class="field">

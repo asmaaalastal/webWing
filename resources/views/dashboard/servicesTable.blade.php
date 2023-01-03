@@ -29,6 +29,8 @@
                                             <th>@lang('langs.img')</th>
                                             <th>@lang('langs.description')</th>
                                             <th>@lang('langs.description_ar')</th>
+                                            <th>@lang('langs.body')</th>
+                                            <th>@lang('langs.body_ar')</th>
                                             <th>@lang('langs.modification')</th>
 
                                         </tr>
@@ -42,6 +44,8 @@
                                             <td> <img style="width: 40%; height: 40%;" src= "{{ asset($service->img)}}"></td>
                                             <td>{{$service->description}}</td>
                                             <td>{{$service->description_ar}}</td>
+                                            <td>{{$service->body}}</td>
+                                            <td>{{$service->body_ar}}</td>
                                             @if(!@empty($service->deleted_at))
                                             <td class="actions-cell">
                                         <a href="{{URL::to('/restoreServices/' . $service->id )}}"><button class="button-68" role="button" type="button">@lang('langs.restor')</button></a> 

@@ -28,6 +28,8 @@ class ServiceRequest extends FormRequest
             'name_ar' => 'required|string',
             'description' => 'required|string',
             'description_ar' => 'required|string',
+            'body' => 'required|string',
+            'body_ar' => 'required|string',
             'image' => 'required',
         ];
     }
@@ -41,6 +43,10 @@ class ServiceRequest extends FormRequest
             'description.string' => 'Warning!,Description must be a string',
             'description_ar.required' => 'Oops!,Description_ar is required',
             'description_ar.string' => 'Warning!,Description_ar must be a string',
+            'body.required' => 'Oops!,body is required',
+            'body.string' => 'Warning!,body must be a string',
+            'body_ar.required' => 'Oops!,body_ar is required',
+            'body_ar.string' => 'Warning!,body_ar must be a string',
             'image.required' => 'Oops!,You must upload an image',
         ];
     }
